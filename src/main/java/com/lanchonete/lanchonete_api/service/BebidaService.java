@@ -21,6 +21,15 @@ public class BebidaService {
         return repository.save(bebida);
     }
 
+    public Bebida atualizar(Long id, Bebida bebidaAtualizada) {
+        Bebida bebida = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bebida não encontrada"));
+        bebida.setNome(bebidaAtualizada.getNome());
+        bebida.setPreco(bebidaAtualizada.getPreco());
+        bebida.setTamanho(bebidaAtualizada.getTamanho());
+        return repository.save(bebida);
+    }
+
     public void deletar(Long id) {
         repository.deleteById(id);
     }

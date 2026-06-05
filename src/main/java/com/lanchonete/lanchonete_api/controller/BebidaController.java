@@ -24,6 +24,11 @@ public class BebidaController {
         return service.salvar(bebida);
     }
 
+    @PutMapping("/{id}")
+    public Bebida atualizar(@PathVariable Long id, @RequestBody Bebida bebida) {
+        return service.atualizar(id, bebida);
+    }
+
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         service.deletar(id);
