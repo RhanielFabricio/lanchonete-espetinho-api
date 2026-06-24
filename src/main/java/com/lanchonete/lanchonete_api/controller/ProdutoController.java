@@ -2,6 +2,9 @@ package com.lanchonete.lanchonete_api.controller;
 
 import com.lanchonete.lanchonete_api.model.Produto;
 import com.lanchonete.lanchonete_api.service.ProdutoService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,14 +23,15 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public Produto salvar(@RequestBody Produto produto) {
+    public Produto salvar(@Valid @RequestBody Produto produto) {
         return service.salvar(produto);
     }
 
     @PutMapping("/{id}")
-    public Produto atualizar(@PathVariable Long id, @RequestBody Produto produto) {
+    public Produto atualizar(@PathVariable Long id, @Valid @RequestBody Produto produto) {
         return service.atualizar(id, produto);
     }
+
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {

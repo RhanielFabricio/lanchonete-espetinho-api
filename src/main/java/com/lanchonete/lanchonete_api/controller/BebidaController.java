@@ -1,5 +1,7 @@
 package com.lanchonete.lanchonete_api.controller;
 
+import jakarta.validation.Valid;
+
 import com.lanchonete.lanchonete_api.model.Bebida;
 import com.lanchonete.lanchonete_api.service.BebidaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,12 @@ public class BebidaController {
     }
 
     @PostMapping
-    public Bebida salvar(@RequestBody Bebida bebida) {
+    public Bebida salvar(@Valid @RequestBody Bebida bebida)  {
         return service.salvar(bebida);
     }
 
     @PutMapping("/{id}")
-    public Bebida atualizar(@PathVariable Long id, @RequestBody Bebida bebida) {
+    public Bebida atualizar(@PathVariable Long id, @Valid @RequestBody Bebida bebida) {
         return service.atualizar(id, bebida);
     }
 

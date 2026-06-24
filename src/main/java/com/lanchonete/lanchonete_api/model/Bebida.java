@@ -1,6 +1,9 @@
 package com.lanchonete.lanchonete_api.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name = "bebidas")
@@ -10,9 +13,15 @@ public class Bebida {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório")
     private String nome;
+
+    @NotNull(message = "Preço é obrigatório")
+    @Positive(message = "Preço deve ser maior que zero")
     private Double preco;
-    private String tamanho; // ex: P, M, G
+
+    @NotBlank(message = "Tamanho é obrigatório")
+    private String tamanho;
 
     public Long getId() {
         return id;
